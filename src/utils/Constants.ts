@@ -66,6 +66,11 @@ export const CLIENTS = {
     DEVICE_MODEL: 'Quest 3',
     USER_AGENT: 'com.google.android.apps.youtube.vr.oculus/1.65.10 (Linux; U; Android 12L; eureka-user Build/SQ3A.220605.009.A1) gzip'
   },
+  ANDROID_SDKLESS: {
+    NAME: 'ANDROID',
+    VERSION: '21.02.35',
+    USER_AGENT: 'com.google.android.youtube/21.02.35 (Linux; U; Android 11) gzip'
+  },
   YTSTUDIO_ANDROID: {
     NAME: 'ANDROID_CREATOR',
     VERSION: '22.43.101'
@@ -133,4 +138,4 @@ export const INNERTUBE_HEADERS_BASE = {
   'content-type': 'application/json'
 } as const;
 
-export const SUPPORTED_CLIENTS = [ 'IOS', 'WEB', 'MWEB', 'YTKIDS', 'YTMUSIC', 'ANDROID', 'ANDROID_VR', 'YTSTUDIO_ANDROID', 'YTMUSIC_ANDROID', 'TV', 'TV_SIMPLY', 'TV_EMBEDDED', 'WEB_EMBEDDED', 'WEB_CREATOR' ];
+export const SUPPORTED_CLIENTS = [ 'IOS', 'WEB', 'MWEB', 'YTKIDS', 'YTMUSIC', 'ANDROID', 'ANDROID_VR', 'ANDROID_SDKLESS', 'YTSTUDIO_ANDROID', 'YTMUSIC_ANDROID', 'TV', 'TV_SIMPLY', 'TV_EMBEDDED', 'WEB_EMBEDDED', 'WEB_CREATOR' ];

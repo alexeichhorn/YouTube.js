@@ -20,6 +20,7 @@ interface ProcessedJsonPayload {
   clientVersion?: string;
   clientNameId?: string;
   adjustedClientName: string;
+  userAgent?: string;
 }
 
 export default class HTTPClient {
@@ -80,7 +81,8 @@ export default class HTTPClient {
         isWebKids: processedIsWebKids,
         clientVersion: processedClientVersion,
         clientNameId: processedClientNameId,
-        adjustedClientName
+        adjustedClientName,
+        userAgent: processedUserAgent
       } = this.#processJsonPayload(body, session);
 
       request_body = newBody;
@@ -94,10 +96,10 @@ export default class HTTPClient {
       }
 
       if (adjustedClientName === Constants.CLIENTS.ANDROID.NAME || adjustedClientName === Constants.CLIENTS.YTMUSIC_ANDROID.NAME) {
-        request_headers.set('User-Agent', Constants.CLIENTS.ANDROID.USER_AGENT);
+        request_headers.set('User-Agent', processedUserAgent || Constants.CLIENTS.ANDROID.USER_AGENT);
         request_headers.set('X-GOOG-API-FORMAT-VERSION', '2');
       } else if (adjustedClientName === Constants.CLIENTS.IOS.NAME) {
-        request_headers.set('User-Agent', Constants.CLIENTS.IOS.USER_AGENT);
+        request_headers.set('User-Agent', processedUserAgent || Constants.CLIENTS.IOS.USER_AGENT);
       }
     } else if (content_type === 'application/x-protobuf') {
       // Assume it is always an Android request.
@@ -178,7 +180,8 @@ export default class HTTPClient {
       isWebKids,
       clientVersion,
       clientNameId,
-      adjustedClientName: new_payload.context.client.clientName
+      adjustedClientName: new_payload.context.client.clientName,
+      userAgent: new_payload.context.client.userAgent
     };
   }
 
@@ -227,6 +230,13 @@ export default class HTTPClient {
       ctx.client.platform = 'MOBILE';
     }
 
+    if (clientName === 'ANDROID_SDKLESS') {
+      ctx.client.userAgent = Constants.CLIENTS.ANDROID_SDKLESS.USER_AGENT;
+      ctx.client.osName = 'Android';
+      ctx.client.osVersion = '11';
+      ctx.client.platform = 'MOBILE';
+    }
+
     switch (clientName) {
       case 'MWEB':
         ctx.client.clientVersion = Constants.CLIENTS.MWEB.VERSION;
@@ -265,6 +275,11 @@ export default class HTTPClient {
         ctx.client.clientVersion = Constants.CLIENTS.ANDROID_VR.VERSION;
         ctx.client.clientFormFactor = 'SMALL_FORM_FACTOR';
         ctx.client.clientName = Constants.CLIENTS.ANDROID_VR.NAME;
+        break;
+      case 'ANDROID_SDKLESS':
+        ctx.client.clientVersion = Constants.CLIENTS.ANDROID_SDKLESS.VERSION;
+        ctx.client.clientFormFactor = 'SMALL_FORM_FACTOR';
+        ctx.client.clientName = Constants.CLIENTS.ANDROID_SDKLESS.NAME;
         break;
       case 'YTMUSIC_ANDROID':
         ctx.client.clientVersion = Constants.CLIENTS.YTMUSIC_ANDROID.VERSION;
