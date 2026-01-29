@@ -25,6 +25,7 @@ export enum ClientType {
   KIDS = 'WEB_KIDS',
   MUSIC = 'WEB_REMIX',
   IOS = 'iOS',
+  IOS_DOWNGRADED = 'iOS',
   ANDROID = 'ANDROID',
   ANDROID_VR = 'ANDROID_VR',
   ANDROID_SDKLESS = 'ANDROID',

@@ -95,7 +95,7 @@ export default class HTTPClient {
         request_headers.set('X-Youtube-Client-Name', processedClientNameId);
       }
 
-      if (adjustedClientName === Constants.CLIENTS.ANDROID.NAME || adjustedClientName === Constants.CLIENTS.YTMUSIC_ANDROID.NAME) {
+      if (adjustedClientName === Constants.CLIENTS.ANDROID.NAME || adjustedClientName === Constants.CLIENTS.YTMUSIC_ANDROID.NAME || adjustedClientName === Constants.CLIENTS.ANDROID_VR.NAME) {
         request_headers.set('User-Agent', processedUserAgent || Constants.CLIENTS.ANDROID.USER_AGENT);
         request_headers.set('X-GOOG-API-FORMAT-VERSION', '2');
       } else if (adjustedClientName === Constants.CLIENTS.IOS.NAME) {
@@ -226,7 +226,7 @@ export default class HTTPClient {
       ctx.client.androidSdkVersion = Constants.CLIENTS.ANDROID.SDK_VERSION;
       ctx.client.userAgent = Constants.CLIENTS.ANDROID.USER_AGENT;
       ctx.client.osName = 'Android';
-      ctx.client.osVersion = '13';
+      ctx.client.osVersion = '11';
       ctx.client.platform = 'MOBILE';
     }
 
@@ -234,6 +234,13 @@ export default class HTTPClient {
       ctx.client.userAgent = Constants.CLIENTS.ANDROID_SDKLESS.USER_AGENT;
       ctx.client.osName = 'Android';
       ctx.client.osVersion = '11';
+      ctx.client.platform = 'MOBILE';
+    }
+
+    if (clientName === 'ANDROID_VR') {
+      ctx.client.userAgent = Constants.CLIENTS.ANDROID_VR.USER_AGENT;
+      ctx.client.osName = 'Android';
+      ctx.client.osVersion = '12L';
       ctx.client.platform = 'MOBILE';
     }
 
@@ -249,9 +256,22 @@ export default class HTTPClient {
         ctx.client.deviceModel = Constants.CLIENTS.IOS.DEVICE_MODEL;
         ctx.client.clientVersion = Constants.CLIENTS.IOS.VERSION;
         ctx.client.clientName = Constants.CLIENTS.IOS.NAME;
+        ctx.client.userAgent = Constants.CLIENTS.IOS.USER_AGENT;
         ctx.client.platform = 'MOBILE';
         ctx.client.osName = Constants.CLIENTS.IOS.OS_NAME;
         ctx.client.osVersion = Constants.CLIENTS.IOS.OS_VERSION;
+        delete ctx.client.browserName;
+        delete ctx.client.browserVersion;
+        break;
+      case 'IOS_DOWNGRADED':
+        ctx.client.deviceMake = 'Apple';
+        ctx.client.deviceModel = Constants.CLIENTS.IOS_DOWNGRADED.DEVICE_MODEL;
+        ctx.client.clientVersion = Constants.CLIENTS.IOS_DOWNGRADED.VERSION;
+        ctx.client.clientName = Constants.CLIENTS.IOS_DOWNGRADED.NAME;
+        ctx.client.userAgent = Constants.CLIENTS.IOS_DOWNGRADED.USER_AGENT;
+        ctx.client.platform = 'MOBILE';
+        ctx.client.osName = Constants.CLIENTS.IOS_DOWNGRADED.OS_NAME;
+        ctx.client.osVersion = Constants.CLIENTS.IOS_DOWNGRADED.OS_VERSION;
         delete ctx.client.browserName;
         delete ctx.client.browserVersion;
         break;
@@ -280,6 +300,10 @@ export default class HTTPClient {
         ctx.client.clientVersion = Constants.CLIENTS.ANDROID_SDKLESS.VERSION;
         ctx.client.clientFormFactor = 'SMALL_FORM_FACTOR';
         ctx.client.clientName = Constants.CLIENTS.ANDROID_SDKLESS.NAME;
+        break;
+      case 'ANDROID_VR':
+        ctx.client.clientVersion = Constants.CLIENTS.ANDROID_VR.VERSION;
+        ctx.client.clientName = Constants.CLIENTS.ANDROID_VR.NAME;
         break;
       case 'YTMUSIC_ANDROID':
         ctx.client.clientVersion = Constants.CLIENTS.YTMUSIC_ANDROID.VERSION;

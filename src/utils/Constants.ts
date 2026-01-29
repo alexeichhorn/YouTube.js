@@ -25,11 +25,19 @@ export const OAUTH = {
 export const CLIENTS = {
   IOS: {
     NAME: 'iOS',
-    VERSION: '20.11.6',
-    USER_AGENT: 'com.google.ios.youtube/20.11.6 (iPhone10,4; U; CPU iOS 16_7_7 like Mac OS X)',
-    DEVICE_MODEL: 'iPhone10,4',
+    VERSION: '20.10.4',
+    USER_AGENT: 'com.google.ios.youtube/20.10.4 (iPhone16,2; U; CPU iOS 18_3_2 like Mac OS X;)',
+    DEVICE_MODEL: 'iPhone16,2',
     OS_NAME: 'iOS',
-    OS_VERSION: '16.7.7.20H330'
+    OS_VERSION: '18.3.2'
+  },
+  IOS_DOWNGRADED: {
+    NAME: 'iOS',
+    VERSION: '19.49.7',
+    USER_AGENT: 'com.google.ios.youtube/19.49.7 (iPhone16,2; U; CPU iOS 17_5_1 like Mac OS X;)',
+    DEVICE_MODEL: 'iPhone16,2',
+    OS_NAME: 'iOS',
+    OS_VERSION: '17.5.1'
   },
   WEB: {
     NAME: 'WEB',
@@ -54,22 +62,19 @@ export const CLIENTS = {
   },
   ANDROID: {
     NAME: 'ANDROID',
-    VERSION: '21.03.36',
-    SDK_VERSION: 36,
-    USER_AGENT: 'com.google.android.youtube/21.03.36(Linux; U; Android 16; en_US; SM-S908E Build/TP1A.220624.014) gzip'
-  },
-  ANDROID_VR: {
-    NAME: 'ANDROID_VR',
-    VERSION: '1.65.10',
-    SDK_VERSION: 32,
-    DEVICE_MAKE: 'Oculus',
-    DEVICE_MODEL: 'Quest 3',
-    USER_AGENT: 'com.google.android.apps.youtube.vr.oculus/1.65.10 (Linux; U; Android 12L; eureka-user Build/SQ3A.220605.009.A1) gzip'
+    VERSION: '20.10.38',
+    SDK_VERSION: 30,
+    USER_AGENT: 'com.google.android.youtube/20.10.38 (Linux; U; Android 11) gzip'
   },
   ANDROID_SDKLESS: {
     NAME: 'ANDROID',
     VERSION: '21.02.35',
     USER_AGENT: 'com.google.android.youtube/21.02.35 (Linux; U; Android 11) gzip'
+  },
+  ANDROID_VR: {
+    NAME: 'ANDROID_VR',
+    VERSION: '1.65.10',
+    USER_AGENT: 'com.google.android.apps.youtube.vr.oculus/1.65.10 (Linux; U; Android 12L; eureka-user Build/SQ3A.220605.009.A1) gzip'
   },
   YTSTUDIO_ANDROID: {
     NAME: 'ANDROID_CREATOR',
@@ -81,8 +86,8 @@ export const CLIENTS = {
   },
   TV: {
     NAME: 'TVHTML5',
-    VERSION: '7.20260311.12.00',
-    USER_AGENT: 'Mozilla/5.0 (ChromiumStylePlatform) Cobalt/Version'
+    VERSION: '7.20250219.14.00',
+    USER_AGENT: 'Mozilla/5.0 (ChromiumStylePlatform) Cobalt/25.lts.30.1034943-gold (unlike Gecko), Unknown_TV_Unknown_0/Unknown (Unknown, Unknown)'
   },
   TV_SIMPLY: {
     NAME: 'TVHTML5_SIMPLY',
@@ -117,9 +122,9 @@ export const CLIENT_NAME_IDS = {
   WEB_KIDS: '76',
   WEB_REMIX: '67',
   ANDROID: '3',
+  ANDROID_VR: '28',
   ANDROID_CREATOR: '14',
   ANDROID_MUSIC: '21',
-  ANDROID_VR: '28',
   TVHTML5: '7',
   TVHTML5_SIMPLY: '74',
   TVHTML5_SIMPLY_EMBEDDED_PLAYER: '85',
@@ -138,4 +143,4 @@ export const INNERTUBE_HEADERS_BASE = {
   'content-type': 'application/json'
 } as const;
 
-export const SUPPORTED_CLIENTS = [ 'IOS', 'WEB', 'MWEB', 'YTKIDS', 'YTMUSIC', 'ANDROID', 'ANDROID_VR', 'ANDROID_SDKLESS', 'YTSTUDIO_ANDROID', 'YTMUSIC_ANDROID', 'TV', 'TV_SIMPLY', 'TV_EMBEDDED', 'WEB_EMBEDDED', 'WEB_CREATOR' ];
+export const SUPPORTED_CLIENTS = [ 'IOS', 'IOS_DOWNGRADED', 'WEB', 'MWEB', 'YTKIDS', 'YTMUSIC', 'ANDROID', 'ANDROID_VR', 'ANDROID_SDKLESS', 'YTSTUDIO_ANDROID', 'YTMUSIC_ANDROID', 'TV', 'TV_SIMPLY', 'TV_EMBEDDED', 'WEB_EMBEDDED', 'WEB_CREATOR' ];
