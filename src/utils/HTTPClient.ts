@@ -242,6 +242,8 @@ export default class HTTPClient {
       ctx.client.osName = 'Android';
       ctx.client.osVersion = '12L';
       ctx.client.platform = 'MOBILE';
+      ctx.client.androidSdkVersion = Constants.CLIENTS.ANDROID_VR.SDK_VERSION;
+      ctx.client.deviceModel = Constants.CLIENTS.ANDROID_VR.DEVICE_MODEL;
     }
 
     switch (clientName) {

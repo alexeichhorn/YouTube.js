@@ -73,8 +73,10 @@ export const CLIENTS = {
   },
   ANDROID_VR: {
     NAME: 'ANDROID_VR',
-    VERSION: '1.65.10',
-    USER_AGENT: 'com.google.android.apps.youtube.vr.oculus/1.65.10 (Linux; U; Android 12L; eureka-user Build/SQ3A.220605.009.A1) gzip'
+    VERSION: '1.71.26',
+    SDK_VERSION: 32,
+    USER_AGENT: 'com.google.android.apps.youtube.vr.oculus/1.71.26 (Linux; U; Android 12L; eureka-user Build/SQ3A.220605.009.A1) gzip',
+    DEVICE_MODEL: 'Quest 3'
   },
   YTSTUDIO_ANDROID: {
     NAME: 'ANDROID_CREATOR',
@@ -99,7 +101,7 @@ export const CLIENTS = {
   },
   WEB_EMBEDDED: {
     NAME: 'WEB_EMBEDDED_PLAYER',
-    VERSION: '1.20260206.01.00',
+    VERSION: '1.20260115.01.00',
     API_KEY: 'AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8',
     API_VERSION: 'v1',
     STATIC_VISITOR_ID: '6zpwvWUNAco'
