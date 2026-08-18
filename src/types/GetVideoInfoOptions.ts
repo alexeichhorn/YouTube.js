@@ -10,4 +10,8 @@ export interface GetVideoInfoOptions {
    * If not provided, session bound token will be used.
    */
   po_token?: string;
+  /**
+   * Encrypted host flags from the embedded player config.
+   */
+  encrypted_host_flags?: string;
 }
