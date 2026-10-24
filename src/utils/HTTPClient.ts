@@ -20,6 +20,7 @@ interface ProcessedJsonPayload {
   clientVersion?: string;
   clientNameId?: string;
   adjustedClientName: string;
+  requestedClient?: string;
 }
 
 export default class HTTPClient {
@@ -80,7 +81,8 @@ export default class HTTPClient {
         isWebKids: processedIsWebKids,
         clientVersion: processedClientVersion,
         clientNameId: processedClientNameId,
-        adjustedClientName
+        adjustedClientName,
+        requestedClient
       } = this.#processJsonPayload(body, session);
 
       request_body = newBody;
@@ -102,6 +104,8 @@ export default class HTTPClient {
         request_headers.set('User-Agent', Constants.CLIENTS.ANDROID_VR.USER_AGENT);
       } else if (adjustedClientName === Constants.CLIENTS.VISIONOS.NAME) {
         request_headers.set('User-Agent', Constants.CLIENTS.VISIONOS.USER_AGENT);
+      } else if (requestedClient?.toUpperCase() === 'TV_SAMSUNG') {
+        request_headers.set('User-Agent', Constants.CLIENTS.TV_SAMSUNG.USER_AGENT);
       }
     } else if (content_type === 'application/x-protobuf') {
       // Assume it is always an Android request.
@@ -182,7 +186,8 @@ export default class HTTPClient {
       isWebKids,
       clientVersion,
       clientNameId,
-      adjustedClientName: new_payload.context.client.clientName
+      adjustedClientName: new_payload.context.client.clientName,
+      requestedClient: parsed_payload.client
     };
   }
 
@@ -296,6 +301,18 @@ export default class HTTPClient {
         ctx.client.clientVersion = Constants.CLIENTS.TV.VERSION;
         ctx.client.clientName = Constants.CLIENTS.TV.NAME;
         ctx.client.userAgent = Constants.CLIENTS.TV.USER_AGENT;
+        break;
+      case 'TV_SAMSUNG':
+        ctx.client.clientVersion = Constants.CLIENTS.TV_SAMSUNG.VERSION;
+        ctx.client.clientName = Constants.CLIENTS.TV_SAMSUNG.NAME;
+        ctx.client.userAgent = Constants.CLIENTS.TV_SAMSUNG.USER_AGENT;
+        ctx.client.deviceMake = Constants.CLIENTS.TV_SAMSUNG.DEVICE_MAKE;
+        ctx.client.deviceModel = Constants.CLIENTS.TV_SAMSUNG.DEVICE_MODEL;
+        ctx.client.osName = Constants.CLIENTS.TV_SAMSUNG.OS_NAME;
+        ctx.client.osVersion = Constants.CLIENTS.TV_SAMSUNG.OS_VERSION;
+        ctx.client.platform = 'TV';
+        delete ctx.client.browserName;
+        delete ctx.client.browserVersion;
         break;
       case 'TV_SIMPLY':
         ctx.client.clientVersion = Constants.CLIENTS.TV_SIMPLY.VERSION;

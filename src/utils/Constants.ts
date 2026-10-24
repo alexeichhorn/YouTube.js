@@ -88,6 +88,15 @@ export const CLIENTS = {
     VERSION: '7.20260311.12.00',
     USER_AGENT: 'Mozilla/5.0 (ChromiumStylePlatform) Cobalt/Version'
   },
+  TV_SAMSUNG: {
+    NAME: 'TVHTML5',
+    VERSION: '5.20260707',
+    USER_AGENT: 'Mozilla/5.0 (SMART-TV; Linux; Tizen 2.4.0) AppleWebKit/538.1 (KHTML, like Gecko) Version/2.4.0 TV Safari/538.1',
+    DEVICE_MAKE: 'Samsung',
+    DEVICE_MODEL: 'UKS9800',
+    OS_NAME: 'Tizen',
+    OS_VERSION: '2.4.0'
+  },
   TV_SIMPLY: {
     NAME: 'TVHTML5_SIMPLY',
     VERSION: '1.0'
@@ -143,4 +152,4 @@ export const INNERTUBE_HEADERS_BASE = {
   'content-type': 'application/json'
 } as const;
 
-export const SUPPORTED_CLIENTS = [ 'IOS', 'WEB', 'MWEB', 'YTKIDS', 'YTMUSIC', 'ANDROID', 'ANDROID_VR', 'VISIONOS', 'YTSTUDIO_ANDROID', 'YTMUSIC_ANDROID', 'TV', 'TV_SIMPLY', 'TV_EMBEDDED', 'WEB_EMBEDDED', 'WEB_CREATOR' ];
+export const SUPPORTED_CLIENTS = [ 'IOS', 'WEB', 'MWEB', 'YTKIDS', 'YTMUSIC', 'ANDROID', 'ANDROID_VR', 'VISIONOS', 'YTSTUDIO_ANDROID', 'YTMUSIC_ANDROID', 'TV', 'TV_SAMSUNG', 'TV_SIMPLY', 'TV_EMBEDDED', 'WEB_EMBEDDED', 'WEB_CREATOR' ];
